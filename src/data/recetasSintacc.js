@@ -1,0 +1,22 @@
+[
+  { "id": 1, "name": "Pan de Harina de Almendras", "category": "Panadería", "prepTime": "35 min", "isAptoVegano": true },
+  { "id": 2, "name": "Curry de Garbanzos y Coco", "category": "Platos Principales", "prepTime": "25 min", "isAptoVegano": true },
+  { "id": 3, "name": "Tarta de Manzana Sin TACC", "category": "Repostería", "prepTime": "50 min", "isAptoVegano": false },
+  { "id": 4, "name": "Galletas de Avena y Plátano", "category": "Snacks", "prepTime": "15 min", "isAptoVegano": true },
+  { "id": 5, "name": "Risotto de Hongos y Coco", "category": "Platos Principales", "prepTime": "30 min", "isAptoVegano": true },
+  { "id": 6, "name": "Muffin de Arándanos y Yuca", "category": "Repostería", "prepTime": "20 min", "isAptoVegano": false },
+  { "id": 7, "name": "Lasaña de Berenjena", "category": "Platos Principales", "prepTime": "45 min", "isAptoVegano": false },
+  { "id": 8, "name": "Pancakes de Trigo Sarraceno", "category": "Desayunos", "prepTime": "15 min", "isAptoVegano": false },
+  { "id": 9, "name": "Sopa Crema de Calabaza", "category": "Entradas", "prepTime": "20 min", "isAptoVegano": true },
+  { "id": 10, "name": "Brownie de Cacao", "category": "Repostería", "prepTime": "30 min", "isAptoVegano": true },
+  { "id": 11, "name": "Crepes de Arroz", "category": "Desayunos", "prepTime": "15 min", "isAptoVegano": true },
+  { "id": 12, "name": "Nuggets de Tofu Crocantes", "category": "Snacks", "prepTime": "25 min", "isAptoVegano": true },
+  { "id": 13, "name": "Hamburguesas de Lentejas", "category": "Platos Principales", "prepTime": "30 min", "isAptoVegano": true },
+  { "id": 14, "name": "Pudin de Chía con Almendras", "category": "Desayunos", "prepTime": "10 min", "isAptoVegano": true },
+  { "id": 15, "name": "Pizza con Base de Coliflor", "category": "Platos Principales", "prepTime": "40 min", "isAptoVegano": false },
+  { "id": 16, "name": "Hummus Tradicional", "category": "Snacks", "prepTime": "10 min", "isAptoVegano": true },
+  { "id": 17, "name": "Mousse de Cacao y Castañas", "category": "Postres", "prepTime": "15 min", "isAptoVegano": true },
+  { "id": 18, "name": "Gnocchis de Batata", "category": "Platos Principales", "prepTime": "35 min", "isAptoVegano": false },
+  { "id": 19, "name": "Tartaleta de Frutas", "category": "Postres", "prepTime": "40 min", "isAptoVegano": false },
+  { "id": 20, "name": "Batido Verde Proteico", "category": "Bebidas", "prepTime": "5 min", "isAptoVegano": true }
+]
