@@ -1,1 +1,26 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@theme {
+  --font-display: "Inter", sans-serif;
+  
+  /* Colores principales */
+  --color-primary: #FF8000;              /* Botón primario y acentos principales */
+  --color-primary-hover: #e67300;        /* Tono más oscuro para el hover del botón */
+  
+  /* Tarjetas y Bordes */
+  --color-surface: #ffffff;              /* Fondo de tarjetas */
+  --color-border-card: #FFA726;          /* Marco/Borde Naranja/Amarillo cálido */
+  
+  /* Fondos y Badges */
+  --color-background: #f7f9fb;           /* Fondo general de la app */
+  --color-accent: #fea619;               /* Dorado/Amarillo para Badges */
+  
+  /* Textos y Footer */
+  --color-on-surface: #191c1e;          /* Texto principal */
+  --color-on-surface-variant: #404850;  /* Texto secundario */
+  --color-footer: #2d3133;              /* Fondo oscuro del footer */
+}
+/*
+Color rojo:  #e50914
+*/
