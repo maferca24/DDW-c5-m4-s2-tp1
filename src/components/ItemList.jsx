@@ -1,6 +1,7 @@
 import { ItemCard } from './ItemCard';
 
 export function ItemList({ items, lista, onToggle, busqueda }) {
+  
   if (items.length === 0) {
     return (
       <div className="text-center py-12 px-4">

@@ -15,45 +15,46 @@ export default function App() {
     item.nombre.toLowerCase().includes(busqueda.toLowerCase().trim())
   );
 
-  const cantidadLista = lista.length;
+  const listaTotal = lista.length;
 
   const toggleLista = (receta) => {
     setLista((prev) => {
       const yaEsta = prev.some((item) => item.id === receta.id);
       return yaEsta
-        ? prev.filter((item) => item.id !== receta.id)
-        : [...prev, receta];
+        ? prev.filter((item) => item.id !== receta.id) // sacar
+        : [...prev, receta];                           // agregar
     });
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-[var(--color-surface-bg)] flex flex-col">
       <Navbar
-        cantidadLista={cantidadLista}
-        alAbrirPanel={() => setMostrarLista(true)}
+        listCount={listaTotal}
+        onOpenPanel={() => setMostrarLista(true)}
       />
 
       <main className="flex-1 py-6">
         <SearchBar
-          textoBusqueda={busqueda}
-          setTextoBusqueda={setBusqueda}
+          searchTerm={busqueda}
+          setSearchTerm={setBusqueda}
         />
 
         <ItemList
           items={recetasFiltradas}
           lista={lista}
-          alAlternar={toggleLista}
+          onToggle={toggleLista}
           busqueda={busqueda}
         />
       </main>
 
+      {/* Renderizado condicional del modal */}
       {mostrarLista && (
         <ListPanel
           lista={lista}
-          alAlternar={toggleLista}
-          alCerrar={() => setMostrarLista(false)}
+          onToggle={toggleLista}
+          onClose={() => setMostrarLista(false)}
         />
       )}
-    </>
+    </div>
   );
 }

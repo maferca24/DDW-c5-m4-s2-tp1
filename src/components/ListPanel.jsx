@@ -26,8 +26,8 @@ export function ListPanel({ lista, onToggle, onClose }) {
                   className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg"
                 >
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-800">{item.name}</h4>
-                    <span className="text-xs text-gray-500">{item.category}</span>
+                    <h4 className="text-sm font-semibold text-gray-800">{item.nombre}</h4>
+                    <span className="text-xs text-gray-500">{item.categoria}</span>
                   </div>
                   <button
                     onClick={() => onToggle(item)}

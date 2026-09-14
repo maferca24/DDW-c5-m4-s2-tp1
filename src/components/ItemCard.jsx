@@ -7,7 +7,7 @@ export function ItemCard({ item, onToggle, isInList }) {
             {item.categoria}
           </span>
           
-          {/* Badge condicional con apotoVegano */}
+          {/* Badge condicional usando && y el booleano isAptoVegano */}
           {item.aptoVegano && (
             <span className="bg-[var(--color-badge-bg)] text-[var(--color-badge)] text-[10px] font-bold px-2 py-0.5 rounded-md">
               🌱 APTO VEGANO
@@ -21,6 +21,7 @@ export function ItemCard({ item, onToggle, isInList }) {
         <p className="text-xs text-gray-500 mb-4">⏱️ {item.tiempoPreparacion}</p>
       </div>
 
+      {/* Botón con ternario según el estado derivado isInList- esta en la lista */}
       <button
         onClick={() => onToggle(item)}
         className={`w-full py-2 px-3 text-xs font-semibold rounded-lg transition-colors cursor-pointer border ${
