@@ -1,13 +1,21 @@
-export function Navbar() {
-    return (
-        <header >
-            <h1>
-                Recetas Sin TACC
-            </h1>
+export function Navbar({ cantidadLista, alAbrirPanel }) {
+  return (
+    <header>
+      
+        <h1>
+          🌱 Recetas Sin TACC
+        </h1>
 
-            <button>
-                Mi Lista
-            </button>
+        <button
+          onClick={alAbrirPanel}
+              >
+          📋 Mi Lista
+          {cantidadLista > 0 && (
+            <span >
+              {cantidadLista}
+            </span>
+          )}
+        </button>
         </header>
-    );
+  );
 }

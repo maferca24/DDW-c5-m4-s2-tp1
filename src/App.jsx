@@ -1,12 +1,19 @@
-import { useState } from 'react'
-import { Navbar } from './components/Navbar'
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react";
+import recetasSintacc from "./data/recetasSintacc.json";
+
+import { Navbar } from "./components/Navbar";
+
+
+export default function App() {
+const [lista, setLista] = useState([]);
+  const cantidadLista = 2;
+
   return (
     <>
-      <Navbar/> 
+      <Navbar
+        cantidadLista={cantidadLista}
+        alAbrirPanel={() => setMostrarLista(true)}   />     
+      
     </>
-  )
+  );
 }
-export default App 
-
