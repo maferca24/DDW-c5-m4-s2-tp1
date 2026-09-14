@@ -1,22 +1,30 @@
-export function ItemList({ items, list, onToggle, searchTerm }) {
+import { ItemCard } from './ItemCard';
+
+export function ItemList({ items, lista, onToggle, busqueda }) {
   if (items.length === 0) {
     return (
-      <p className="empty-state">
-        No encontramos nada para "{searchTerm}"
-      </p>
+      <div className="text-center py-12 px-4">
+        <p className="text-gray-500 text-base font-medium">
+          No encontramos nada para "{busqueda}"
+        </p>
+      </div>
     );
   }
 
   return (
-    <div className="grid">
-      {items.map((item) => (
-        <ItemCard
-          key={item.id}
-          item={item}
-          onToggle={onToggle}
-          isInList={list.some((i) => i.id === item.id)}
-        />
-      ))}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 max-w-6xl mx-auto pb-12">
+      {items.map((item) => {
+        const isInList = lista.some((i) => i.id === item.id);
+
+        return (
+          <ItemCard
+            key={item.id}
+            item={item}
+            onToggle={onToggle}
+            isInList={isInList}
+          />
+        );
+      })}
     </div>
   );
 }
