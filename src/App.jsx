@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import recetasSintacc from "./data/recetasSintacc.json";
 
 import { Navbar } from "./components/Navbar";
@@ -9,7 +9,9 @@ import { ListPanel } from "./components/ListPanel";
 export default function App() {
   const [lista, setLista] = useState([]);
   const [busqueda, setBusqueda] = useState('');
-  const [mostrarLista, setMostrarLista] = useState(false);
+
+  // 1. Referencia para marcar la sección final
+  const seccionListaRef = useRef(null);
 
   const recetasFiltradas = recetasSintacc.filter((item) =>
     item.nombre.toLowerCase().includes(busqueda.toLowerCase().trim())
@@ -21,16 +23,21 @@ export default function App() {
     setLista((prev) => {
       const yaEsta = prev.some((item) => item.id === receta.id);
       return yaEsta
-        ? prev.filter((item) => item.id !== receta.id) // sacar
-        : [...prev, receta];                           // agregar
+        ? prev.filter((item) => item.id !== receta.id)
+        : [...prev, receta];
     });
   };
 
+  // 2. Función para desplazarse suavemente hasta abajo
+  const irALaLista = () => {
+    seccionListaRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen bg-[var(--color-surface-bg)] flex flex-col">
+    <div className="min-h-screen bg-[var(--color-background)] flex flex-col">
       <Navbar
         listCount={listaTotal}
-        onOpenPanel={() => setMostrarLista(true)}
+        onOpenPanel={irALaLista}
       />
 
       <main className="flex-1 py-6">
@@ -45,16 +52,15 @@ export default function App() {
           onToggle={toggleLista}
           busqueda={busqueda}
         />
-      </main>
 
-      {/* Renderizado condicional del modal */}
-      {mostrarLista && (
-        <ListPanel
-          lista={lista}
-          onToggle={toggleLista}
-          onClose={() => setMostrarLista(false)}
-        />
-      )}
+        {/* 3. Lista visible al final con su referencia asignada */}
+        <section ref={seccionListaRef} className="pt-8">
+          <ListPanel
+            lista={lista}
+            onToggle={toggleLista}
+          />
+        </section>
+      </main>
     </div>
   );
 }
