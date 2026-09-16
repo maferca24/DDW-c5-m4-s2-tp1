@@ -1,3 +1,5 @@
+//searchTerm contiene valor actual de búsqueda, 
+//setSearchTerm función para actualizar el estado del buscador
 export function SearchBar({ searchTerm, setSearchTerm }) {
   return (
     <div className="w-full max-w-md mx-auto mb-6 px-4">

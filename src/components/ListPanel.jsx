@@ -1,5 +1,9 @@
+//lista array de recetas guardadas
+//onToggle para quitar elementos desde el panel
+//onClose fcion para cambiar mostrarLista a false  al hacer click en la x
 export function ListPanel({ lista, onToggle, onClose }) {
   return (
+    //fixed inset-0 /40 posicion fija fondo semitransparente
     <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex justify-end">
       <aside className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col p-6">
         <div className="flex justify-between items-center pb-4 border-b border-gray-200">

@@ -7,20 +7,25 @@ import { ItemList } from "./components/ItemList";
 import { ListPanel } from "./components/ListPanel";
 
 export default function App() {
+  //lista guarda las recetas que el usuario agrego a Mi lista
+  //busqueda, string que guarda lo que el usuario van tipeando
+  //booleano para abrir y cerrar el panel lateral (modal)
   const [lista, setLista] = useState([]);
   const [busqueda, setBusqueda] = useState('');
   const [mostrarLista, setMostrarLista] = useState(false);
 
+  //filtra el json de recetas
   const recetasFiltradas = recetasSintacc.filter((item) =>
     item.nombre.toLowerCase().includes(busqueda.toLowerCase().trim())
   );
 
   const listaTotal = lista.length;
-
+//revisa  si la receta ya existe en el array lista
   const toggleLista = (receta) => {
     setLista((prev) => {
       const yaEsta = prev.some((item) => item.id === receta.id);
       return yaEsta
+      //Si ya esta lo remueve(filter) si no esta lo agrega con ..prev
         ? prev.filter((item) => item.id !== receta.id) // sacar
         : [...prev, receta];                           // agregar
     });
@@ -47,7 +52,8 @@ export default function App() {
         />
       </main>
 
-      {/* Renderizado condicional del modal */}
+      {/* Renderizado condicional del modal-solo dibuja listPanel si mostrar lista=true
+ */}
       {mostrarLista && (
         <ListPanel
           lista={lista}

@@ -1,5 +1,5 @@
 import logoSingluten from '../assets/trigo.png';
-
+//listCount- total de recetas agregadas, onOpenPanel fcion que cambia mostrarLista a true
 export function Navbar({ listCount, onOpenPanel }) {
   return (
     <header className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-xs">
@@ -15,13 +15,14 @@ export function Navbar({ listCount, onOpenPanel }) {
           </span>
         </div>
 
-        {/* Botón usando las variables de tu nuevo theme */}
+        {/* Botón usando las variables del nuevo theme */}
         <button
           onClick={onOpenPanel}
           className="relative px-4 py-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-sm font-semibold rounded-lg transition-colors flex items-center gap-2 cursor-pointer shadow-xs"
         >
           📋 Mi Lista
-          {/* Contador de la lista */}
+          {/* Contador de la lista-  //Solo muestra burbujita con el número si hay un elemento guardado */}
+         
           {listCount > 0 && (
             <span className="bg-white text-[var(--color-primary)] text-xs font-bold px-2 py-0.5 rounded-full">
               {listCount}
