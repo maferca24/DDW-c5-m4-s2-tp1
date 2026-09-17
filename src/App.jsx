@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import recetasSintacc from "./data/recetasSintacc.json";
 
 import { Navbar } from "./components/Navbar";
@@ -16,6 +16,22 @@ export default function App() {
   );
 
   const listaTotal = lista.length;//para pasar el total de elementos seleccionados
+//useEffect
+useEffect(() => {
+    const nombreApp = "Recetas Sin TACC";
+    
+    if (listaTotal > 0) {
+      document.title = `Mi lista (${listaTotal}) | ${nombreApp}`;
+    } else {
+      document.title = nombreApp;
+    }
+  }, [listaTotal]);
+
+
+
+
+
+
 //actualiza la lista -agrega y quita en la misma función
   const toggleLista = (receta) => {
     setLista((prev) => {
