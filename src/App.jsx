@@ -7,16 +7,16 @@ import { ItemList } from "./components/ItemList";
 import { ListPanel } from "./components/ListPanel";
 
 export default function App() {
-  const [lista, setLista] = useState([]);
-  const [busqueda, setBusqueda] = useState('');
-  const [mostrarLista, setMostrarLista] = useState(false);
+  const [lista, setLista] = useState([]); //recetas que guardo el usuario
+  const [busqueda, setBusqueda] = useState('');// guarda la busqueda y actualiza
+  const [mostrarLista, setMostrarLista] = useState(false);//determina si el panel de recetas esta abierto o cerrado
 
   const recetasFiltradas = recetasSintacc.filter((item) =>
     item.nombre.toLowerCase().includes(busqueda.toLowerCase().trim())
   );
 
-  const listaTotal = lista.length;
-
+  const listaTotal = lista.length;//para pasar el total de elementos seleccionados
+//actualiza la lista -agrega y quita en la misma función
   const toggleLista = (receta) => {
     setLista((prev) => {
       const yaEsta = prev.some((item) => item.id === receta.id);
