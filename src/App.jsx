@@ -6,6 +6,16 @@ import { SearchBar } from "./components/SearchBar";
 import { ItemList } from "./components/ItemList";
 import { ListPanel } from "./components/ListPanel";
 
+//localstorage
+const [lista, setLista] = useState(() => {
+  try {
+    const guardado = localStorage.getItem('recetasSinTacc:lista');
+    return guardado ? JSON.parse(guardado) : [];
+  } catch {
+    return [];
+  }
+});
+
 export default function App() {
   const [lista, setLista] = useState([]); //recetas que guardo el usuario
   const [busqueda, setBusqueda] = useState('');// guarda la busqueda y actualiza
