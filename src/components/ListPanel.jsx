@@ -1,4 +1,4 @@
-export function ListPanel({ lista, onToggle, onClose }) {
+export function ListPanel({ lista, onToggle, onVaciar, onClose }) {
   return (
     <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex justify-end">
       <aside className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col p-6">
@@ -13,31 +13,42 @@ export function ListPanel({ lista, onToggle, onClose }) {
         </div>
 
         <div className="flex-1 overflow-y-auto py-4">
-          {/* Empty State requerido de lista vacía */}
           {lista.length === 0 ? (
             <div className="text-center py-12 px-2 text-gray-500">
               <p className="text-sm">Todavía no agregaste nada, buscá algo arriba 👆</p>
             </div>
           ) : (
-            <ul className="space-y-3">
-              {lista.map((item) => (
-                <li
-                  key={item.id}
-                  className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg"
+            <>
+              {/* Botón para vaciar lista */}
+              <div className="flex justify-end mb-4">
+                <button
+                  onClick={onVaciar}
+                  className="text-xs font-semibold text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-1.5 rounded-lg border border-red-200 cursor-pointer transition-colors"
                 >
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-800">{item.nombre}</h4>
-                    <span className="text-xs text-gray-500">{item.categoria}</span>
-                  </div>
-                  <button
-                    onClick={() => onToggle(item)}
-                    className="text-xs font-semibold text-red-600 hover:text-red-800 hover:bg-red-50 px-2 py-1 rounded cursor-pointer"
+                  Vaciar mi lista
+                </button>
+              </div>
+
+              <ul className="space-y-3">
+                {lista.map((item) => (
+                  <li
+                    key={item.id}
+                    className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg"
                   >
-                    Quitar
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-800">{item.nombre}</h4>
+                      <span className="text-xs text-gray-500">{item.categoria}</span>
+                    </div>
+                    <button
+                      onClick={() => onToggle(item)}
+                      className="text-xs font-semibold text-red-600 hover:text-red-800 hover:bg-red-50 px-2 py-1 rounded cursor-pointer"
+                    >
+                      Quitar
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </div>
       </aside>

@@ -47,11 +47,6 @@ useEffect(() => {
     }
   }, [listaTotal]);
 
-
-
-
-
-
 //actualiza la lista -agrega y quita en la misma función
   const toggleLista = (receta) => {
     setLista((prev) => {
@@ -60,6 +55,16 @@ useEffect(() => {
         ? prev.filter((item) => item.id !== receta.id) // sacar
         : [...prev, receta];                           // agregar
     });
+  };
+  //agrego funcion para vaciar lista
+  const vaciarLista = () => {
+    if (lista.length === 0) return;
+
+    const confirmar = window.confirm("¿Estás seguro de que querés vaciar tu lista de recetas?");
+    if (confirmar) {
+      setLista([]);
+      localStorage.removeItem(guardado);
+    }
   };
 
   return (
@@ -88,6 +93,7 @@ useEffect(() => {
         <ListPanel
           lista={lista}
           onToggle={toggleLista}
+          onVaciar={vaciarLista} // Le pasamos la función al panel
           onClose={() => setMostrarLista(false)}
         />
       )}
