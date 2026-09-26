@@ -6,6 +6,8 @@ import { SearchBar } from "./components/SearchBar";
 import { ItemList } from "./components/ItemList";
 import { ListPanel } from "./components/ListPanel";
 
+export default function App() {
+
 //localstorage
 const [lista, setLista] = useState(() => {
   try {
@@ -15,18 +17,26 @@ const [lista, setLista] = useState(() => {
     return [];
   }
 });
-
-export default function App() {
-  const [lista, setLista] = useState([]); //recetas que guardo el usuario
+  /*const [lista, setLista] = useState([]); //recetas que guardo el usuario*/
   const [busqueda, setBusqueda] = useState('');// guarda la busqueda y actualiza
   const [mostrarLista, setMostrarLista] = useState(false);//determina si el panel de recetas esta abierto o cerrado
 
+  //
+  useEffect(() => {
+  try {
+    localStorage.setItem('recetasSinTacc:lista', JSON.stringify(lista));
+  } catch (error) {
+    console.error("Error al guardar en localStorage:", error);
+  }
+}, [lista]);
+
+  
   const recetasFiltradas = recetasSintacc.filter((item) =>
     item.nombre.toLowerCase().includes(busqueda.toLowerCase().trim())
   );
 
   const listaTotal = lista.length;//para pasar el total de elementos seleccionados
-//useEffect
+//useEffect para título de la ventana
 useEffect(() => {
     const nombreApp = "Recetas Sin TACC";
     
