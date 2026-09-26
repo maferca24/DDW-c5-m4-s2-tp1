@@ -25,7 +25,7 @@ export function ListPanel({ lista, onToggle, onVaciar, onClose }) {
                   onClick={onVaciar}
                   className="text-xs font-semibold text-red-600 hover:text-red-800 hover:bg-red-50 px-3 py-1.5 rounded-lg border border-red-200 cursor-pointer transition-colors"
                 >
-                  Vaciar mi lista
+                  🗑️Vaciar mi lista
                 </button>
               </div>
 
