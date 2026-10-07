@@ -5,51 +5,36 @@ import { Navbar } from "./components/Navbar";
 import { SearchBar } from "./components/SearchBar";
 import { ItemList } from "./components/ItemList";
 import { ListPanel } from "./components/ListPanel";
-import useToggle from "./hooks/useToggle";
+
+import useToggle from "./hooks/useToogle";
+import useRecetasList from "./hooks/useRecetasList";
 
 export default function App() {
+const { list, total, toggle, clear } = useRecetasList();
+const [mostrarPanel, setMostrarPanel] = useToggle(false);
+const [busqueda, setBusqueda] = useState("");// guarda la busqueda y actualiza
 
-//localstorage
-const [lista, setLista] = useState(() => {
-  try {
-    const guardado = localStorage.getItem('recetasSinTacc:lista');
-    return guardado ? JSON.parse(guardado) : [];
-  } catch {
-    return [];
-  }
-});
-  /*const [lista, setLista] = useState([]); //recetas que guardo el usuario*/
-  const [busqueda, setBusqueda] = useState('');// guarda la busqueda y actualiza
-  const [mostrarLista, setMostrarLista] = useState(false);//determina si el panel de recetas esta abierto o cerrado
-
-  //
-  useEffect(() => {
-  try {
-    localStorage.setItem('recetasSinTacc:lista', JSON.stringify(lista));
-  } catch (error) {
-    console.error("Error al guardar en localStorage:", error);
-  }
-}, [lista]);
-
-  
-  const recetasFiltradas = recetasSintacc.filter((item) =>
+/*const [mostrarLista, setMostrarLista] = useState(false);//determina si el panel de recetas esta abierto o <cerrado></cerrado>*/
+   
+const recetasFiltradas = recetasSintacc.filter((item) =>
     item.nombre.toLowerCase().includes(busqueda.toLowerCase().trim())
   );
 
-  const listaTotal = lista.length;//para pasar el total de elementos seleccionados
+/*  const listaTotal = lista.length;//para pasar el total de elementos seleccionados*/
 //useEffect para título de la ventana
 useEffect(() => {
     const nombreApp = "Recetas Sin TACC";
-    
-    if (listaTotal > 0) {
+    DocumentTimeline.title= total >0?  `Mi lista (${total}) | ${nombreApp}` : nombreApp;
+  }, [total]);
+    /*if (listaTotal > 0) {
       document.title = `Mi lista (${listaTotal}) | ${nombreApp}`;
     } else {
       document.title = nombreApp;
     }
-  }, [listaTotal]);
+  }, [listaTotal]);*/
 
 //actualiza la lista -agrega y quita en la misma función
-  const toggleLista = (receta) => {
+  /*const toggleLista = (receta) => {
     setLista((prev) => {
       const yaEsta = prev.some((item) => item.id === receta.id);
       return yaEsta
@@ -66,13 +51,13 @@ useEffect(() => {
       setLista([]);
       localStorage.removeItem(guardado);
     }
-  };
+  };*/
 
   return (
     <div className="min-h-screen bg-[var(--color-surface-bg)] flex flex-col">
       <Navbar
-        listCount={listaTotal}
-        onOpenPanel={() => setMostrarLista(true)}
+        listCount={total}
+        onOpenPanel={setMostrarPanel}
       />
 
       <main className="flex-1 py-6">
@@ -83,19 +68,19 @@ useEffect(() => {
 
         <ItemList
           items={recetasFiltradas}
-          lista={lista}
-          onToggle={toggleLista}
+          lista={list}
+          onToggle={toggle}
           busqueda={busqueda}
         />
       </main>
 
       {/* Renderizado condicional del modal */}
-      {mostrarLista && (
+      {mostrarPanel && (
         <ListPanel
-          lista={lista}
-          onToggle={toggleLista}
-          onVaciar={vaciarLista} // Le pasamos la función al panel
-          onClose={() => setMostrarLista(false)}
+          lista={list}
+          onToggle={toggle}
+          onVaciar={clear} // Le pasamos la función al panel
+          onClose={setMostrarPanel}
         />
       )}
     </div>
