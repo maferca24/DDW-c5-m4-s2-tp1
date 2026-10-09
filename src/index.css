@@ -21,6 +21,14 @@
   --color-on-surface-variant: #404850;  /* Texto secundario */
   --color-footer: #2d3133;              /* Fondo oscuro del footer */
 }
+.dark {
+  --color-background: #121212;           /* Fondo general oscuro */
+  --color-surface: #1e1e1e;              /* Fondo de tarjetas/paneles oscuro */
+  --color-on-surface: #f1f5f9;          /* Texto principal claro */
+  --color-on-surface-variant: #94a3b8;  /* Texto secundario gris claro */
+  --color-border-card: #e67300;          /* Borde ajustado para fondo oscuro */
+}
+
 /*
 Color rojo:  #e50914
 */
