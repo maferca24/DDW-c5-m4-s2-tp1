@@ -32,7 +32,7 @@ export function ItemCard({ item, onToggle, isInList }) {
         onClick={() => onToggle(item)}
         className={`w-full py-2.5 px-3 text-xs font-semibold rounded-lg transition-colors cursor-pointer border ${
           isInList
-          //si estaat en la list cambia a color verde
+          //si estaa en la list cambia a color verde
             ? 'bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100'
             : 'bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white border-transparent shadow-xs'
         }`}
