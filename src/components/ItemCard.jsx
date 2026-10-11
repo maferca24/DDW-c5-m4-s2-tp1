@@ -4,8 +4,8 @@
 //osInList calculado en ItemList para saber si la receta esta guardada
 export function ItemCard({ item, onToggle, isInList }) {
   return (
-    
-    <article className="bg-white border-2 border-[var(--color-border-card)] rounded-xl p-5 shadow-xs flex flex-col justify-between h-full hover:shadow-md transition-shadow">
+   
+    <article className="bg-[var(--color-surface)] border-2 border-[var(--color-border-card)] rounded-xl p-5 shadow-xs flex flex-col justify-between h-full hover:shadow-md transition-shadow">
 
       <div>
         <div className="flex justify-between items-start gap-2 mb-2">

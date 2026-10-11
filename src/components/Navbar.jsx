@@ -3,7 +3,7 @@ import ThemeSwitcher from './ThemeSwitcher'; // Corregida la ruta a components
 
 export function Navbar({ listCount, onOpenPanel }) {
   return (
-    <header className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-xs">
+    <header className="sticky top-0 z-10 bg-[var(--color-surface)]  border-b border-[var(--color-border-card)] transition-colors shadow-xs">    
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         
         {/* Marca / Logo */}
@@ -30,7 +30,7 @@ export function Navbar({ listCount, onOpenPanel }) {
           >
             📋 Mi Lista
             {listCount > 0 && (
-              <span className="bg-white text-[var(--color-primary)] text-xs font-bold px-2 py-0.5 rounded-full">
+              <span className="bg-[var(--color-surface)] text-[var(--color-primary)] text-xs font-bold px-2 py-0.5 rounded-full">
                 {listCount}
               </span>
             )}

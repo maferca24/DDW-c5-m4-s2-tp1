@@ -21,11 +21,11 @@ const recetasFiltradas = recetasSintacc.filter((item) =>
 //useEffect para título de la ventana
 useEffect(() => {
     const nombreApp = "Recetas Sin TACC";
-    DocumentTimeline.title= total >0?  `Mi lista (${total}) | ${nombreApp}` : nombreApp;
+    document.title= total >0?  `Mi lista (${total}) | ${nombreApp}` : nombreApp;
   }, [total]);
     
   return (
-    <div className="min-h-screen bg-[var(--color-surface-bg)] flex flex-col">
+<div className="min-h-screen bg-[var(--color-background)] text-[var(--color-on-surface)] transition-colors flex flex-col"> 
       <Navbar
         listCount={total}
         onOpenPanel={setMostrarPanel}
